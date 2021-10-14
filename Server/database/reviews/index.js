@@ -5,8 +5,8 @@ const ReviewSchema = new mongoose.Schema({
   food: { type: mongoose.Types.ObjectId, ref: "Images" },
   restaurant: { type: mongoose.Types.ObjectId, ref: "Restaurant" },
   rating: Number,
-  photos: { type: mongoose.Types.ObjectId, ref: "Images" },
+  photos:[ { type: mongoose.Types.ObjectId, ref: "Images" },],
   rating: Number,
   user: { type: mongoose.Types.ObjectId, ref: "Users" },
 });
-export const ReviewModal = mongoose.model("Reviews", ReviewSchema);
+export const ReviewModel = mongoose.model("Reviews", ReviewSchema);
