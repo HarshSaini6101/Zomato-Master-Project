@@ -18,5 +18,9 @@ const OrderSchema = new mongoose.Schema({
     },
   ],
   orderRating: { type: Number, required: true },
-});
+},
+{
+    timestamps: true,
+}
+);
 export const OrderModel = mongoose.model("Orders", OrderSchema);
