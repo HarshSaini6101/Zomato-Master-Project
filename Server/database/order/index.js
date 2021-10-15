@@ -19,4 +19,4 @@ const OrderSchema = new mongoose.Schema({
   ],
   orderRating: { type: Number, required: true },
 });
-export const OrderModal = mongoose.model("Orders", OrderSchema);
+export const OrderModel = mongoose.model("Orders", OrderSchema);

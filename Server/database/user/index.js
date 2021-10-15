@@ -52,4 +52,4 @@ UserSchema.pre("save", function (next) {
         });
     });
 });
-export const UserModal = mongoose.model("Users", UserSchema);
+export const UserModel = mongoose.model("Users", UserSchema);

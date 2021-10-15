@@ -15,4 +15,4 @@ const RestaurantSchema = new mongoose.Schema({
   photos: { type: mongoose.Types.ObjectId, ref: "Images" },
 });
 
-export const RestaurantModal = mongoose.model("Restaurant", RestaurantSchema);
+export const RestaurantModel = mongoose.model("Restaurant", RestaurantSchema);
