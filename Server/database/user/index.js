@@ -14,6 +14,10 @@ const UserSchema = new mongoose.Schema({
 }
 );
 
+UserSchema.methods.generateJwtToken = function () {
+    return jwt.sign({user: this.id.toString() }, "ZomatoApp");
+};
+
 UserSchema.statics.findByEmailAndPhone = async ( { email, phoneNumber } ) => {
     const checkUserByEmail = await UserModel.findOne({ email });
     const checkUserByPhone = await UserModel.findOne({ phoneNumber });
@@ -24,8 +28,15 @@ UserSchema.statics.findByEmailAndPhone = async ( { email, phoneNumber } ) => {
     return false;
 };
 
-UserSchema.methods.generateJwtToken = function () {
-    return jwt.sign({user: this.id.toString() }, "ZomatoApp");
+UserSchema.statics.findByEmailAndPhone= async ({ email, password }) => {
+    const user = await UserModel.findOne({ email });
+if(!user) throw new Error("user does not exist!!!");
+
+const doesPasswordMatch = await bcrypt.compare(password, user.password );
+
+if(!doesPasswordMatch) throw new Error("invalid Password!!!");
+
+    return user;
 };
 
 UserSchema.pre("save", function (next) {
