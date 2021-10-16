@@ -8,6 +8,8 @@ import passport from "passport";
 import googleAuthConfig from "./config/google.config";
 
 import Auth from "./API/auth";
+import Restaurant from "./API/restaurants";
+import Foods from "./API/foods";
 
 import ConnectDB from "./database/connection";
 
@@ -21,6 +23,8 @@ zomato.use(cors());
 googleAuthConfig(passport);
 
 zomato.use("/auth", Auth);
+zomato.use("/restaurants", Restaurant);
+zomato.use("/foods", Foods);
 
 zomato.get("/", (req, res) => res.json({message : "setup succes"}) );
 
